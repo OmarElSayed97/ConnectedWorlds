@@ -9,6 +9,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private float rotationSpeed = 20f;
     [SerializeField] private LayerMask groundMask;
     [SerializeField] private Transform groundCheckerSource;
+    [SerializeField] private float gravityForce = 10f;
 
     private Vector3 _movDir;
     private Rigidbody _rb;
@@ -20,6 +21,8 @@ public class PlayerController : MonoBehaviour
 
     private Vector2 _input;
     private Vector3 _projectedForward;
+
+    
     private void Awake()
     {
         _fauxBody = GetComponent<FauxGravityBody>();
@@ -51,12 +54,15 @@ public class PlayerController : MonoBehaviour
         {
             _projectedForward = Vector3.ProjectOnPlane(trans.forward, _hit.normal);
             _rb.rotation = Quaternion.LookRotation(_projectedForward, _hit.normal);
-            _rb.velocity = _projectedForward * (_input.y * speed);
+            _rb.velocity = _projectedForward * (_input.y * speed) + (-_hit.normal * gravityForce);
+            _rb.angularVelocity = _input.x * rotationSpeed * _hit.normal;
+            // if (_input.y > 0)
+            //     _rb.angularVelocity = _input.x * rotationSpeed * _hit.normal;
+            // else
+            //     _rb.angularVelocity = Vector3.zero;
         }
         
-        
-        _rb.angularVelocity = -_input.x * rotationSpeed * Vector3.up;
-        
+        // _rb.AddForce(_hit.normal * -gravityForce, ForceMode.Force);
     }
 
     private void CheckGround()
