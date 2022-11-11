@@ -15,15 +15,10 @@ public class PlayerController : MonoBehaviour
         rb = GetComponent<Rigidbody>();
     }
 
-    // Update is called once per frame
-    void Update()
+
+    private void Update()
     {
         movDir = new Vector3(Input.GetAxisRaw("Horizontal"), 0, Input.GetAxisRaw("Vertical")).normalized;
-
-    }
-
-    void FixedUpdate()
-    {
-        rb.MovePosition(rb.position + transform.TransformDirection(movDir) * speed * Time.deltaTime);
+        rb.velocity = (transform.TransformDirection(movDir).normalized * speed);
     }
 }
