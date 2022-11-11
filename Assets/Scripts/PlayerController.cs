@@ -56,10 +56,10 @@ public class PlayerController : MonoBehaviour
             _rb.rotation = Quaternion.LookRotation(_projectedForward, _hit.normal);
             _rb.velocity = _projectedForward * (_input.y * speed) + (-_hit.normal * gravityForce);
             _rb.angularVelocity = _input.x * rotationSpeed * _hit.normal;
-            // if (_input.y > 0)
-            //     _rb.angularVelocity = _input.x * rotationSpeed * _hit.normal;
-            // else
-            //     _rb.angularVelocity = Vector3.zero;
+            if (Mathf.Abs(_input.y) > 0)
+                _rb.angularVelocity = _input.x * rotationSpeed * _hit.normal;
+            else if (_rb.angularVelocity.sqrMagnitude > 0)
+                _rb.angularVelocity = Vector3.zero;
         }
         
         // _rb.AddForce(_hit.normal * -gravityForce, ForceMode.Force);
