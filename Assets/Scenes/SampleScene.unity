@@ -261,7 +261,7 @@ GameObject:
   - component: {fileID: 320823503}
   - component: {fileID: 320823502}
   - component: {fileID: 320823501}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -529,7 +529,7 @@ GameObject:
   - component: {fileID: 363651051}
   - component: {fileID: 363651050}
   - component: {fileID: 363651049}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -742,9 +742,8 @@ GameObject:
   - component: {fileID: 413893917}
   - component: {fileID: 413893916}
   - component: {fileID: 413893915}
-  - component: {fileID: 413893920}
   m_Layer: 6
-  m_Name: Planet1 (1)
+  m_Name: Planet2
   m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -843,117 +842,9 @@ Transform:
   - {fileID: 320823500}
   - {fileID: 363651048}
   - {fileID: 427707438}
-  m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_Father: {fileID: 2099743551}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 2, y: 3, z: 2}
---- !u!114 &413893920
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 413893913}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  updateType: 0
-  isSpeedBased: 0
-  hasOnStart: 0
-  hasOnPlay: 0
-  hasOnUpdate: 0
-  hasOnStepComplete: 0
-  hasOnComplete: 0
-  hasOnTweenCreated: 0
-  hasOnRewind: 0
-  onStart:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlay:
-    m_PersistentCalls:
-      m_Calls: []
-  onUpdate:
-    m_PersistentCalls:
-      m_Calls: []
-  onStepComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  onComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  onTweenCreated:
-    m_PersistentCalls:
-      m_Calls: []
-  onRewind:
-    m_PersistentCalls:
-      m_Calls: []
-  targetIsSelf: 1
-  targetGO: {fileID: 0}
-  tweenTargetIsTargetGO: 1
-  delay: 0
-  duration: 8
-  easeType: 1
-  easeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  loopType: 2
-  loops: -1
-  id: 
-  isRelative: 0
-  isFrom: 0
-  isIndependentUpdate: 0
-  autoKill: 1
-  autoGenerate: 1
-  isActive: 1
-  isValid: 1
-  target: {fileID: 413893919}
-  animationType: 3
-  targetType: 11
-  forcedTargetType: 0
-  autoPlay: 1
-  useTargetAsV3: 0
-  endValueFloat: 0
-  endValueV3: {x: 30, y: 100, z: 200}
-  endValueV2: {x: 0, y: 0}
-  endValueColor: {r: 1, g: 1, b: 1, a: 1}
-  endValueString: 
-  endValueRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  endValueTransform: {fileID: 0}
-  optionalBool0: 0
-  optionalBool1: 0
-  optionalFloat0: 0
-  optionalInt0: 0
-  optionalRotationMode: 0
-  optionalScrambleMode: 0
-  optionalShakeRandomnessMode: 0
-  optionalString: 
 --- !u!1 &427707437
 GameObject:
   m_ObjectHideFlags: 0
@@ -966,7 +857,7 @@ GameObject:
   - component: {fileID: 427707441}
   - component: {fileID: 427707440}
   - component: {fileID: 427707439}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1179,9 +1070,8 @@ GameObject:
   - component: {fileID: 564128109}
   - component: {fileID: 564128108}
   - component: {fileID: 564128107}
-  - component: {fileID: 564128112}
   m_Layer: 6
-  m_Name: Planet1 (2)
+  m_Name: Planet3
   m_TagString: Planet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1280,117 +1170,9 @@ Transform:
   - {fileID: 786818624}
   - {fileID: 1330621555}
   - {fileID: 1971708080}
-  m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_Father: {fileID: 2099743551}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 2, y: 3, z: 2}
---- !u!114 &564128112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 564128105}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4d0390bd8b8ffd640b34fe25065ff1df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  updateType: 0
-  isSpeedBased: 0
-  hasOnStart: 0
-  hasOnPlay: 0
-  hasOnUpdate: 0
-  hasOnStepComplete: 0
-  hasOnComplete: 0
-  hasOnTweenCreated: 0
-  hasOnRewind: 0
-  onStart:
-    m_PersistentCalls:
-      m_Calls: []
-  onPlay:
-    m_PersistentCalls:
-      m_Calls: []
-  onUpdate:
-    m_PersistentCalls:
-      m_Calls: []
-  onStepComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  onComplete:
-    m_PersistentCalls:
-      m_Calls: []
-  onTweenCreated:
-    m_PersistentCalls:
-      m_Calls: []
-  onRewind:
-    m_PersistentCalls:
-      m_Calls: []
-  targetIsSelf: 1
-  targetGO: {fileID: 0}
-  tweenTargetIsTargetGO: 1
-  delay: 0
-  duration: 8
-  easeType: 1
-  easeCurve:
-    serializedVersion: 2
-    m_Curve:
-    - serializedVersion: 3
-      time: 0
-      value: 0
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    - serializedVersion: 3
-      time: 1
-      value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0
-      outWeight: 0
-    m_PreInfinity: 2
-    m_PostInfinity: 2
-    m_RotationOrder: 4
-  loopType: 2
-  loops: -1
-  id: 
-  isRelative: 0
-  isFrom: 0
-  isIndependentUpdate: 0
-  autoKill: 1
-  autoGenerate: 1
-  isActive: 1
-  isValid: 1
-  target: {fileID: 564128111}
-  animationType: 3
-  targetType: 11
-  forcedTargetType: 0
-  autoPlay: 1
-  useTargetAsV3: 0
-  endValueFloat: 0
-  endValueV3: {x: 132, y: 37, z: 87}
-  endValueV2: {x: 0, y: 0}
-  endValueColor: {r: 1, g: 1, b: 1, a: 1}
-  endValueString: 
-  endValueRect:
-    serializedVersion: 2
-    x: 0
-    y: 0
-    width: 0
-    height: 0
-  endValueTransform: {fileID: 0}
-  optionalBool0: 0
-  optionalBool1: 0
-  optionalFloat0: 0
-  optionalInt0: 0
-  optionalRotationMode: 0
-  optionalScrambleMode: 0
-  optionalShakeRandomnessMode: 0
-  optionalString: 
 --- !u!1 &572230796
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,7 +1185,7 @@ GameObject:
   - component: {fileID: 572230800}
   - component: {fileID: 572230799}
   - component: {fileID: 572230798}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1499,7 +1281,7 @@ GameObject:
   - component: {fileID: 706591379}
   - component: {fileID: 706591381}
   - component: {fileID: 706591380}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Portal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1562,7 +1344,7 @@ GameObject:
   - component: {fileID: 716541957}
   - component: {fileID: 716541956}
   - component: {fileID: 716541955}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1660,7 +1442,7 @@ GameObject:
   - component: {fileID: 773550279}
   - component: {fileID: 773550278}
   - component: {fileID: 773550277}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1757,7 +1539,7 @@ GameObject:
   - component: {fileID: 786818627}
   - component: {fileID: 786818626}
   - component: {fileID: 786818625}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1855,7 +1637,7 @@ GameObject:
   - component: {fileID: 823148030}
   - component: {fileID: 823148029}
   - component: {fileID: 823148028}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder (2)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1952,7 +1734,7 @@ GameObject:
   - component: {fileID: 824357558}
   - component: {fileID: 824357560}
   - component: {fileID: 824357559}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Text (TMP)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2137,7 +1919,7 @@ GameObject:
   - component: {fileID: 901265897}
   - component: {fileID: 901265896}
   - component: {fileID: 901265895}
-  m_Layer: 5
+  m_Layer: 0
   m_Name: Canvas
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2238,7 +2020,7 @@ GameObject:
   - component: {fileID: 1006620353}
   - component: {fileID: 1006620352}
   - component: {fileID: 1006620351}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2336,7 +2118,7 @@ GameObject:
   - component: {fileID: 1009556754}
   - component: {fileID: 1009556753}
   - component: {fileID: 1009556752}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2517,7 +2299,7 @@ GameObject:
   - component: {fileID: 1241388216}
   - component: {fileID: 1241388215}
   - component: {fileID: 1241388214}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2615,7 +2397,7 @@ GameObject:
   - component: {fileID: 1330621558}
   - component: {fileID: 1330621557}
   - component: {fileID: 1330621556}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2769,7 +2551,7 @@ Transform:
   m_Children:
   - {fileID: 309768806}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1473817852
 GameObject:
@@ -2783,7 +2565,7 @@ GameObject:
   - component: {fileID: 1473817856}
   - component: {fileID: 1473817855}
   - component: {fileID: 1473817854}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2879,7 +2661,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1493764284}
   - component: {fileID: 1493764285}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: PortalReachPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2963,7 +2745,7 @@ Transform:
   - {fileID: 1217098634}
   - {fileID: 212807160}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1505713419
 Rigidbody:
@@ -3000,6 +2782,10 @@ MonoBehaviour:
     m_Bits: 64
   groundCheckerSource: {fileID: 212807160}
   gravityForce: 10
+  detectionRadius: 10
+  groundDetectionDistance: 2
+  grounded: 0
+  _currentPlanet: {fileID: 0}
 --- !u!96 &1505713422
 TrailRenderer:
   serializedVersion: 2
@@ -3198,7 +2984,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1681675582}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 40, y: 40, z: 40}
   m_ConstrainProportionsScale: 0
@@ -3209,8 +2995,8 @@ Transform:
   - {fileID: 773550276}
   - {fileID: 1788350026}
   - {fileID: 706591379}
-  m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_Father: {fileID: 2099743551}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1681675587
 MonoBehaviour:
@@ -3236,7 +3022,7 @@ GameObject:
   - component: {fileID: 1788350026}
   - component: {fileID: 1788350028}
   - component: {fileID: 1788350027}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: EnergyPillar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3301,7 +3087,7 @@ GameObject:
   - component: {fileID: 1894749743}
   - component: {fileID: 1894749742}
   - component: {fileID: 1894749741}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3399,7 +3185,7 @@ GameObject:
   - component: {fileID: 1971708083}
   - component: {fileID: 1971708082}
   - component: {fileID: 1971708081}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Cube (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3549,5 +3335,39 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2099743550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2099743551}
+  m_Layer: 0
+  m_Name: Planets
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2099743551
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2099743550}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 1681675586}
+  - {fileID: 413893919}
+  - {fileID: 564128111}
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
