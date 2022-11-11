@@ -15,9 +15,6 @@ public class OrbitalCamera : MonoBehaviour
     [SerializeField, Range(0f, 1f)]
     float focusCentering = 0.5f;
 
-    [SerializeField, Range(1f, 360f)]
-    float rotationSpeed = 90f;
-
     Vector3 focusPoint;
     Vector2 orbitAngles = new Vector2(25f, 0f);
 

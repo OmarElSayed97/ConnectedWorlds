@@ -11,7 +11,6 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private Transform groundCheckerSource;
     [SerializeField] private float gravityForce = 10f;
 
-    private Vector3 _movDir;
     private Rigidbody _rb;
 
     private FauxGravityBody _fauxBody;
@@ -22,29 +21,28 @@ public class PlayerController : MonoBehaviour
     private Vector2 _input;
     private Vector3 _projectedForward;
 
-    
+
     private void Awake()
     {
         _fauxBody = GetComponent<FauxGravityBody>();
         _rb = GetComponent<Rigidbody>();
-        
+
     }
-    
+
     private void Start()
     {
         _ray = new Ray();
         _input = new Vector2();
-        _movDir = new Vector3();
         _projectedForward = new Vector3();
     }
 
     private void FixedUpdate()
     {
         // _fauxBody.Attract();
-        
-        _input.Set(Input.GetAxisRaw("Horizontal"),  Input.GetAxisRaw("Vertical")); 
+
+        _input.Set(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
         _input.Normalize();
-        
+
         var trans = transform;
 
         _ray.origin = groundCheckerSource.position;
@@ -56,18 +54,18 @@ public class PlayerController : MonoBehaviour
             _rb.rotation = Quaternion.LookRotation(_projectedForward, _hit.normal);
             _rb.velocity = _projectedForward * (_input.y * speed) + (-_hit.normal * gravityForce);
             _rb.angularVelocity = _input.x * rotationSpeed * _hit.normal;
-            if (Mathf.Abs(_input.y) > 0)
+            if (_input.y > 0)
                 _rb.angularVelocity = _input.x * rotationSpeed * _hit.normal;
-            else if (_rb.angularVelocity.sqrMagnitude > 0)
+            else
                 _rb.angularVelocity = Vector3.zero;
         }
-        
+
         // _rb.AddForce(_hit.normal * -gravityForce, ForceMode.Force);
     }
 
     private void CheckGround()
     {
-       
+
     }
 
     private void OnDrawGizmos()
