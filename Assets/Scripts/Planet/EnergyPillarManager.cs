@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using TMPro;
+using Enum;
 public class EnergyPillarManager : MonoBehaviour
 {
     [SerializeField]
-    public int pillarID;
+    public Pillars pillarID;
     [SerializeField]
-    public int planetID;
+    public Planets planetID;
 
     [HideInInspector]
     public bool isCharged;
@@ -19,6 +20,7 @@ public class EnergyPillarManager : MonoBehaviour
     Material pillarMaterial;
 
     Transform player;
+    GameManager gameManager;
 
 
     //To be changed after adding asseets
@@ -26,14 +28,27 @@ public class EnergyPillarManager : MonoBehaviour
     TextMeshProUGUI chargeAmountText;
     float emissiveIntensity = 10f;
     Color emissiveColor;
+    bool isPillarReady;
 
     void Start()
     {
+        gameManager = GameManager._instance;
         pillarCanvas = transform.GetChild(0).GetComponent<Canvas>();
         pillarMaterial = transform.GetChild(1).GetComponent<Renderer>().material;
         player = GameObject.FindGameObjectWithTag("Player").transform;
         emissiveColor = Color.gray;
-        Debug.Log(pillarMaterial.color);
+    }
+
+    void Update()
+    {
+        if (gameManager.currentPlanet.pillarsValues[pillarID] >= 100 && !isPillarReady)
+        {
+            isPillarReady = true;
+            gameManager.currentPlanet.pillarsChargedCount++;
+            gameManager.pillarsIndicator[(int)pillarID].enabled = true;
+
+        }
+
     }
 
     void OnTriggerEnter()
@@ -61,12 +76,12 @@ public class EnergyPillarManager : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            if (chargeAmount < 100)
+            if (gameManager.currentPlanet.pillarsValues[pillarID] < 100)
             {
-                chargeAmount = chargeAmount + (Time.deltaTime * 50);
-                chargeAmountText.text = ((int)chargeAmount).ToString();
+                gameManager.currentPlanet.pillarsValues[pillarID] = gameManager.currentPlanet.pillarsValues[pillarID] + (Time.deltaTime * 50);
+                chargeAmountText.text = ((int)gameManager.currentPlanet.pillarsValues[pillarID]).ToString();
 
-                pillarMaterial.SetColor("_EmissionColor", emissiveColor * ((chargeAmount / 100) * emissiveIntensity));
+                pillarMaterial.SetColor("_EmissionColor", emissiveColor * ((gameManager.currentPlanet.pillarsValues[pillarID] / 100) * emissiveIntensity));
                 pillarMaterial.EnableKeyword("_EMISSION");
 
 

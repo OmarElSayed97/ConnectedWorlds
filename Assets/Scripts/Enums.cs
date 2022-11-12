@@ -3,23 +3,23 @@ namespace Enum
 
     public enum Portals
     {
-        LOVE_PORTAL,
-        FEAR_PORTAL,
-        HAPPY_PORTAL
+        LOVE_PORTAL = 0,
+        FEAR_PORTAL = 1,
+        SURPRISE_PORTAL = 2
     }
 
     public enum Planets
     {
-        LOVE_PLANET,
-        FEAR_PLANET,
-        HAPPY_PLANET
+        LOVE_PLANET = 0,
+        FEAR_PLANET = 1,
+        SURPRISE_PLANET = 2
     }
 
     public enum Pillars
     {
-        FIRST,
-        SECOND,
-        THIRD
+        FIRST = 0,
+        SECOND = 1,
+        THIRD = 2
 
     }
 
