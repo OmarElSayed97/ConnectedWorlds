@@ -51,7 +51,7 @@ namespace Planet
 
         void OnTriggerEnter()
         {
-            pillarCanvas.transform.LookAt(pillarCanvas.transform.position + player.transform.rotation * Vector3.forward, Vector3.up);
+            // pillarCanvas.transform.LookAt(pillarCanvas.transform.position + player.transform.rotation * Vector3.forward, Vector3.up);
             pillarCanvas.transform.DOScale(0.05f, 0.5f).From(0).SetEase(Ease.Linear);
         }
 
