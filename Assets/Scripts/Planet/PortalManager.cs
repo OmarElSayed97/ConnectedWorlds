@@ -19,7 +19,7 @@ public class PortalManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        gameManager = GameManager._instance;
+        gameManager = GameManager.Instance;
         player = GameObject.FindGameObjectWithTag("Player").transform;
 
     }
@@ -28,8 +28,6 @@ public class PortalManager : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
-
-
         if (other.CompareTag("Player") && !gameManager.isPlayerTravelling && gameManager.currentPlanet.isPortalReady)
         {
             Debug.Log("Entered Portal");

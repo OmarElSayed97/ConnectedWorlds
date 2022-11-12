@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager _instance { get; private set; }
+    public static GameManager Instance { get; private set; }
 
 
     [HideInInspector]
@@ -38,13 +38,13 @@ public class GameManager : MonoBehaviour
 
     void Awake()
     {
-        if (_instance != null && _instance != this)
+        if (Instance != null && Instance != this)
         {
             Destroy(this);
         }
         else
         {
-            _instance = this;
+            Instance = this;
         }
     }
 
