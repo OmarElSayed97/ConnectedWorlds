@@ -31,7 +31,8 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     Image[] emotionFillingBars;
     [SerializeField]
-    TextMeshProUGUI scoreValue;
+    TextMeshProUGUI scoreText;
+    float scoreValue;
 
     #endregion
 
@@ -59,8 +60,9 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+        UpdateScore();
         UpdateEmotions();
-        if (currentPlanet.pillarsChargedCount == 3 && !currentPlanet.isPortalReady)
+        if (currentPlanet.pillarsChargedCount >= 3 && !currentPlanet.isPortalReady)
             currentPlanet.isPortalReady = true;
     }
 
@@ -79,6 +81,15 @@ public class GameManager : MonoBehaviour
                 emotionFillingBars[i].fillAmount = (emotionValues[(Planets)i] / 100);
             }
 
+        }
+    }
+
+    void UpdateScore()
+    {
+        if (!isPlayerTravelling)
+        {
+            scoreValue += (Time.deltaTime * 5);
+            scoreText.text = ((int)scoreValue).ToString();
         }
 
     }

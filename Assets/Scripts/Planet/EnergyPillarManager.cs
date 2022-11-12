@@ -41,9 +41,8 @@ public class EnergyPillarManager : MonoBehaviour
 
     void Update()
     {
-        if (gameManager.currentPlanet.pillarsValues[pillarID] >= 100 && !isPillarReady)
+        if (gameManager.currentPlanet.pillarsValues[pillarID] >= 100)
         {
-            isPillarReady = true;
             gameManager.currentPlanet.pillarsChargedCount++;
             gameManager.pillarsIndicator[(int)pillarID].enabled = true;
 
@@ -53,11 +52,8 @@ public class EnergyPillarManager : MonoBehaviour
 
     void OnTriggerEnter()
     {
-        Debug.Log("Entered Pillar: " + pillarID + " on planet: " + planetID);
         pillarCanvas.transform.LookAt(pillarCanvas.transform.position + player.transform.rotation * Vector3.forward, Vector3.up);
         pillarCanvas.transform.DOScale(0.05f, 0.5f).From(0).SetEase(Ease.Linear);
-
-
     }
 
     void OnTriggerExit()

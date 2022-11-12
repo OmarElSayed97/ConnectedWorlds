@@ -32,6 +32,7 @@ public class PortalManager : MonoBehaviour
 
         if (other.CompareTag("Player") && !gameManager.isPlayerTravelling && gameManager.currentPlanet.isPortalReady)
         {
+            Debug.Log("Entered Portal");
             gameManager.currentPlanet.ResetPlanet();
             foreach (Image image in gameManager.pillarsIndicator)
             {
