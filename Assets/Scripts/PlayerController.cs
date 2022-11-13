@@ -2,7 +2,8 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
-using Unity.Collections;
+using DG.Tweening;
+using Enum;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -18,7 +19,7 @@ public class PlayerController : MonoBehaviour
     [SerializeField] private bool grounded;
 
     private Rigidbody _rb;
-
+    private CapsuleCollider _playerCollider;
     private FauxGravityBody _fauxBody;
 
     private Ray _ray;
@@ -31,13 +32,19 @@ public class PlayerController : MonoBehaviour
     private Collider[] _planetsColliders;
 
     [SerializeField] private Transform _currentPlanet;
-
+    
 
     private void Awake()
     {
         _fauxBody = GetComponent<FauxGravityBody>();
         _rb = GetComponent<Rigidbody>();
+        _playerCollider = GetComponent<CapsuleCollider>();
         _planetsColliders = new Collider[10];
+    }
+
+    private void OnEnable()
+    {
+        GameManager.PlayerTravelStarted += OnPlayerTravelStarted;
     }
 
     private void Start()
@@ -100,7 +107,20 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-
+    private void OnPlayerTravelStarted(Planets destination)
+    {
+        _playerCollider.isTrigger = true;
+        var newPlanetController = GameManager.Instance.GetPlanet(destination);
+        transform.DOMove(newPlanetController.GetRandomDestinationPoint().transform.position, 3f).OnComplete(Complete);
+        
+        void Complete()
+        {
+            _playerCollider.isTrigger = false;
+            GameManager.Instance.EndPlayerTravel(destination);
+        }
+    
+    }
+    
     private void OnDrawGizmos()
     {
         Gizmos.DrawRay(transform.position, _projectedForward);

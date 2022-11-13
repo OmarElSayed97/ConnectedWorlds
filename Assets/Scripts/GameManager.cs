@@ -1,15 +1,19 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using Enum;
+using Managers;
+using Planet;
 using TMPro;
 using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-
-
+    
+    private PlanetManager _planetPlanetManager;
+    
     [HideInInspector]
     public Dictionary<Planets, PlanetData> allPlanets;
     [HideInInspector]
@@ -36,6 +40,8 @@ public class GameManager : MonoBehaviour
 
     #endregion
 
+    public static event Action<Planets> PlayerTravelStarted;
+    public static event Action<Planets> PlayerTravelEnded;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -46,6 +52,8 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+        
+        _planetPlanetManager = GetComponent<PlanetManager>();
     }
 
     void Start()
@@ -55,6 +63,7 @@ public class GameManager : MonoBehaviour
         InitializePlanets();
         InitializeBars();
         currentPlanet = allPlanets[Planets.LOVE_PLANET];
+        
     }
 
 
@@ -109,5 +118,32 @@ public class GameManager : MonoBehaviour
         {
             emotionValues.Add((Planets)i, barsInitialAmount);
         }
+    }
+
+    public PlanetController GetPlanet(Planets planet)
+    {
+        return _planetPlanetManager.PlanetsDict[planet];
+    }
+
+
+    public void StartPlayerTravel(Planets destinationPlanet)
+    {
+        if (isPlayerTravelling)
+            return;
+        currentPlanet.ResetPlanet();
+        foreach (var image in pillarsIndicator)
+        {
+            image.enabled = false;
+        }
+        currentPlanet = allPlanets[destinationPlanet];
+        isPlayerTravelling = true;
+        
+        PlayerTravelStarted?.Invoke(destinationPlanet);
+    }
+
+    public void EndPlayerTravel(Planets destinationPlanet)
+    {
+        isPlayerTravelling = false;
+        PlayerTravelEnded?.Invoke(destinationPlanet);
     }
 }

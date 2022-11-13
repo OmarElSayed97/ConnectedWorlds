@@ -1,51 +1,45 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using Enum;
+using System;
 using DG.Tweening;
+using Enum;
+using UnityEngine;
 using UnityEngine.UI;
 
-public class PortalManager : MonoBehaviour
+namespace Planet
 {
-
-    [SerializeField]
-    Planets destinationPlanet;
-    [SerializeField]
-    Transform destinationPoint;
-
-    GameManager gameManager;
-
-    Transform player;
-    // Start is called before the first frame update
-    void Start()
+    public class PortalManager : MonoBehaviour
     {
-        gameManager = GameManager.Instance;
-        player = GameObject.FindGameObjectWithTag("Player").transform;
 
-    }
+        [SerializeField] private Planets destinationPlanet;
+        // [SerializeField] private Transform destinationPoint;
 
+        GameManager gameManager;
 
+        // Transform player;
 
-    void OnTriggerEnter(Collider other)
-    {
-        if (other.CompareTag("Player") && !gameManager.isPlayerTravelling && gameManager.currentPlanet.isPortalReady)
+        public event Action<Planets> PlayerEntered;
+        // Start is called before the first frame update
+        void Start()
         {
-            Debug.Log("Entered Portal");
-            gameManager.currentPlanet.ResetPlanet();
-            foreach (Image image in gameManager.pillarsIndicator)
-            {
-                image.enabled = false;
-            }
-            gameManager.currentPlanet = gameManager.allPlanets[destinationPlanet];
-            gameManager.isPlayerTravelling = true;
-            player.GetComponent<CapsuleCollider>().isTrigger = true;
-            player.DOMove(destinationPoint.position, 3f).OnComplete(Complete);
-            void Complete()
-            {
-                player.GetComponent<CapsuleCollider>().isTrigger = false;
-                gameManager.isPlayerTravelling = false;
-            }
+            gameManager = GameManager.Instance;
+            // player = GameObject.FindGameObjectWithTag("Player").transform;
+
         }
 
+
+
+        void OnTriggerEnter(Collider other)
+        {
+            if (other.CompareTag("Player") && !gameManager.isPlayerTravelling && gameManager.currentPlanet.isPortalReady)
+            {
+                OnPlayerEntered();
+            }
+
+        }
+
+        protected virtual void OnPlayerEntered()
+        {
+            Debug.Log("Entered Portal");
+            PlayerEntered?.Invoke(destinationPlanet);
+        }
     }
 }
