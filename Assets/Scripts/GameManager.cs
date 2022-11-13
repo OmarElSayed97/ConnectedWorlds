@@ -11,11 +11,11 @@ using UnityEngine.UI;
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
-    
+
     private PlanetManager _planetPlanetManager;
-    
+
     [HideInInspector]
-    public Dictionary<Planets, PlanetData> allPlanets;
+    public Dictionary<Planets, PlanetData> allPlanetsData;
     [HideInInspector]
     public Dictionary<Planets, float> emotionValues;
     [SerializeField]
@@ -52,18 +52,18 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
-        
+
         _planetPlanetManager = GetComponent<PlanetManager>();
     }
 
     void Start()
     {
-        allPlanets = new Dictionary<Planets, PlanetData>();
+        allPlanetsData = new Dictionary<Planets, PlanetData>();
         emotionValues = new Dictionary<Planets, float>();
         InitializePlanets();
         InitializeBars();
-        currentPlanet = allPlanets[Planets.LOVE_PLANET];
-        
+        currentPlanet = allPlanetsData[Planets.HAPPY_PLANET];
+
     }
 
 
@@ -71,6 +71,7 @@ public class GameManager : MonoBehaviour
     {
         UpdateScore();
         UpdateEmotions();
+        MovePlanets();
         if (currentPlanet.pillarsChargedCount >= 3 && !currentPlanet.isPortalReady)
             currentPlanet.isPortalReady = true;
     }
@@ -108,7 +109,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             PlanetData newPlanet = new PlanetData((Planets)i);
-            allPlanets.Add((Planets)i, newPlanet);
+            allPlanetsData.Add((Planets)i, newPlanet);
         }
 
     }
@@ -118,6 +119,11 @@ public class GameManager : MonoBehaviour
         {
             emotionValues.Add((Planets)i, barsInitialAmount);
         }
+    }
+    void MovePlanets()
+    {
+        GetPlanet(Planets.HAPPY_PLANET).transform.position = Vector3.Lerp(GetPlanet(Planets.HAPPY_PLANET).startPoint, GetPlanet(Planets.HAPPY_PLANET).endPoint, emotionValues[Planets.HAPPY_PLANET] * 0.01f);
+
     }
 
     public PlanetController GetPlanet(Planets planet)
@@ -135,9 +141,9 @@ public class GameManager : MonoBehaviour
         {
             image.enabled = false;
         }
-        currentPlanet = allPlanets[destinationPlanet];
+        currentPlanet = allPlanetsData[destinationPlanet];
         isPlayerTravelling = true;
-        
+
         PlayerTravelStarted?.Invoke(destinationPlanet);
     }
 

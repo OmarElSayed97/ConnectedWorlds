@@ -11,12 +11,20 @@ namespace Planet
         [SerializeField] private Planets planetType;
         [SerializeField] private PortalManager[] portals;
         [SerializeField] private DestinationPoint[] destinationPoints;
+        [SerializeField] public Vector3 startPoint, endPoint;
+        private Rigidbody rb;
 
         public Planets PlanetType => planetType;
-
+        public Rigidbody PlanetBody => rb;
+        private void Awake()
+        {
+            //rb = GetComponent<Rigidbody>();
+        }
         private void Start()
         {
             SubscribeToPortals();
+            startPoint = transform.position;
+
         }
 
         private void SubscribeToPortals()
@@ -36,7 +44,7 @@ namespace Planet
         {
             return destinationPoints[Random.Range(0, destinationPoints.Length)];
         }
-        
+
 
         [Button]
         private void SetRefs()
