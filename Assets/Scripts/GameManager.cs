@@ -71,7 +71,7 @@ public class GameManager : MonoBehaviour
     {
         UpdateScore();
         UpdateEmotions();
-        MovePlanets();
+        // MovePlanets();
         if (currentPlanet.pillarsChargedCount >= 3 && !currentPlanet.isPortalReady)
             currentPlanet.isPortalReady = true;
     }

@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
 
 
 
-    //private Rigidbody _rb;
+    private Rigidbody _rb;
     private CapsuleCollider _playerCollider;
     private FauxGravityBody _fauxBody;
 
@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         _fauxBody = GetComponent<FauxGravityBody>();
-        // _rb = GetComponent<Rigidbody>();
+        _rb = GetComponent<Rigidbody>();
         _playerCollider = GetComponent<CapsuleCollider>();
         _planetsColliders = new Collider[10];
 
@@ -100,9 +100,9 @@ public class PlayerController : MonoBehaviour
             grounded = true;
             _currentNormal = (trans.position - _currentPlanet.position).normalized;
             _projectedForward = Vector3.ProjectOnPlane(trans.forward, _currentNormal);
-            // _rb.rotation = Quaternion.LookRotation(_projectedForward, _currentNormal);
-            // _rb.velocity = _projectedForward * (_input.y * speed) + (-_currentNormal * gravityForce);
-            // _rb.angularVelocity = _input.x * rotationSpeed * _currentNormal;
+            _rb.rotation = Quaternion.LookRotation(_projectedForward, _currentNormal);
+            _rb.velocity = _projectedForward * (_input.y * speed) + (-_currentNormal * gravityForce);
+            _rb.angularVelocity = _input.x * rotationSpeed * _currentNormal;
         }
         else
         {
