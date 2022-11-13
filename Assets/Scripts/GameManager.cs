@@ -26,6 +26,8 @@ public class GameManager : MonoBehaviour
     float emotionIncreasingFactor;
     [SerializeField]
     float emotionDecayingFactor;
+    [SerializeField]
+    Transform sun;
     [HideInInspector]
     public bool isPlayerTravelling;
 
@@ -71,7 +73,7 @@ public class GameManager : MonoBehaviour
     {
         UpdateScore();
         UpdateEmotions();
-        // MovePlanets();
+        MoveSun();
         if (currentPlanet.pillarsChargedCount >= 3 && !currentPlanet.isPortalReady)
             currentPlanet.isPortalReady = true;
     }
@@ -120,9 +122,10 @@ public class GameManager : MonoBehaviour
             emotionValues.Add((Planets)i, barsInitialAmount);
         }
     }
-    void MovePlanets()
+    void MoveSun()
     {
-        GetPlanet(Planets.HAPPY_PLANET).transform.position = Vector3.Lerp(GetPlanet(Planets.HAPPY_PLANET).startPoint, GetPlanet(Planets.HAPPY_PLANET).endPoint, emotionValues[Planets.HAPPY_PLANET] * 0.01f);
+        sun.position = Vector3.Lerp(Vector3.zero, GetPlanet(currentPlanet.planetType).startPoint, emotionValues[currentPlanet.planetType] * 0.01f);
+        Debug.Log((emotionValues[currentPlanet.planetType] * 0.01f) + " :::: " + sun.position);
 
     }
 
