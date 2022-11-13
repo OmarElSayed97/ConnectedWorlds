@@ -14,6 +14,8 @@ namespace Managers
 
         public Dictionary<Planets, PlanetController> PlanetsDict => _planetsDict;
 
+        public PlanetController[] PlanetControllers => planetControllers;
+
         private void Awake()
         {
             InitDictionary();
