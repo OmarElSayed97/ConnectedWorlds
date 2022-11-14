@@ -26,8 +26,7 @@ public class GameManager : MonoBehaviour
     float emotionIncreasingFactor;
     [SerializeField]
     float emotionDecayingFactor;
-    [SerializeField]
-    Transform sun;
+
     [HideInInspector]
     public bool isPlayerTravelling;
 
@@ -39,6 +38,14 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     TextMeshProUGUI scoreText;
     float scoreValue;
+
+    //Sun Movement
+    [SerializeField]
+    Transform sun;
+    Material sunMaterial;
+    Vector3 sunPosAtArrival;
+    Color sunColorbeforeArrival;
+    float curEmotionAtArrival;
 
     #endregion
 
@@ -65,6 +72,8 @@ public class GameManager : MonoBehaviour
         InitializePlanets();
         InitializeBars();
         currentPlanet = allPlanetsData[Planets.HAPPY_PLANET];
+        sunMaterial = sun.GetComponent<Renderer>().material;
+        sunColorbeforeArrival = Color.white;
 
     }
 
@@ -86,9 +95,17 @@ public class GameManager : MonoBehaviour
             for (int i = 0; i < 3; i++)
             {
                 if (i == (int)currentPlanet.planetType)
-                    emotionValues[(Planets)i] += (Time.deltaTime * emotionIncreasingFactor);
+                {
+                    if (emotionValues[(Planets)i] <= 100)
+                        emotionValues[(Planets)i] += (Time.deltaTime * emotionIncreasingFactor);
+                }
+
                 else
-                    emotionValues[(Planets)i] -= (Time.deltaTime * emotionDecayingFactor);
+                {
+                    if (emotionValues[(Planets)i] >= 0)
+                        emotionValues[(Planets)i] -= (Time.deltaTime * emotionDecayingFactor);
+                }
+
 
                 emotionFillingBars[i].fillAmount = (emotionValues[(Planets)i] / 100);
             }
@@ -124,8 +141,11 @@ public class GameManager : MonoBehaviour
     }
     void MoveSun()
     {
-        sun.position = Vector3.Lerp(Vector3.zero, GetPlanet(currentPlanet.planetType).startPoint, emotionValues[currentPlanet.planetType] * 0.01f);
-        Debug.Log((emotionValues[currentPlanet.planetType] * 0.01f) + " :::: " + sun.position);
+        float lerpingFactor = (emotionValues[currentPlanet.planetType] - curEmotionAtArrival) / (100 - curEmotionAtArrival);
+        sun.position = Vector3.Lerp(sunPosAtArrival, GetPlanet(currentPlanet.planetType).startPoint, lerpingFactor);
+        sunMaterial.color = Color.Lerp(sunColorbeforeArrival, allPlanetsData[currentPlanet.planetType].planetColor, lerpingFactor);
+        sunMaterial.SetColor("_EmissionColor", Color.Lerp(sunColorbeforeArrival, allPlanetsData[currentPlanet.planetType].planetColor, lerpingFactor) * 2);
+        sunMaterial.EnableKeyword("_EMISSION");
 
     }
 
@@ -144,6 +164,7 @@ public class GameManager : MonoBehaviour
         {
             image.enabled = false;
         }
+        sunColorbeforeArrival = allPlanetsData[currentPlanet.planetType].planetColor;
         currentPlanet = allPlanetsData[destinationPlanet];
         isPlayerTravelling = true;
 
@@ -153,6 +174,8 @@ public class GameManager : MonoBehaviour
     public void EndPlayerTravel(Planets destinationPlanet)
     {
         isPlayerTravelling = false;
+        sunPosAtArrival = sun.position;
+        curEmotionAtArrival = emotionValues[destinationPlanet];
         PlayerTravelEnded?.Invoke(destinationPlanet);
     }
 }
