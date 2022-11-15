@@ -8,6 +8,7 @@ using Planet;
 using TMPro;
 using UnityEngine.UI;
 using DG.Tweening;
+using Sirenix.OdinInspector;
 
 public class GameManager : MonoBehaviour
 {
@@ -27,6 +28,8 @@ public class GameManager : MonoBehaviour
     float emotionIncreasingFactor;
     [SerializeField]
     float emotionDecayingFactor;
+
+    [SerializeField, PropertyRange(0, 100)] private float planetNearDeathThreshold;
 
     [HideInInspector]
     public bool isPlayerTravelling;
@@ -52,6 +55,8 @@ public class GameManager : MonoBehaviour
 
     public static event Action<Planets> PlayerTravelStarted;
     public static event Action<Planets> PlayerTravelEnded;
+
+    public static event Action<Planets> PlanetNearDeath;
     void Awake()
     {
         if (Instance != null && Instance != this)
@@ -95,6 +100,7 @@ public class GameManager : MonoBehaviour
         {
             for (int i = 0; i < 3; i++)
             {
+                var planetPreviousValue = emotionValues[(Planets)i];
                 if (i == (int)currentPlanet.planetType)
                 {
                     if (emotionValues[(Planets)i] <= 100)
@@ -110,6 +116,11 @@ public class GameManager : MonoBehaviour
 
                 emotionsRadialBars[i].Slider = (emotionValues[(Planets)i] * 0.005f) + 0.5f;
 
+                if (planetPreviousValue > planetNearDeathThreshold &&
+                    emotionValues[(Planets)i] < planetNearDeathThreshold)
+                {
+                    PlanetNearDeath?.Invoke((Planets)i);
+                }
             }
 
         }
