@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: a06751d5e5dda4f49ac7d3c65ce4591b
+guid: e8a25b29def1f1842a3ce145cfd2447e
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
@@ -7,28 +7,38 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Fur white and dark
-    second: {fileID: 2100000, guid: 060c02a346229b749a37f3c94ae244f5, type: 2}
+      name: black.001
+    second: {fileID: 2100000, guid: 1476bf0b945c78f47808a38f88ce62c0, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Pastel blue pink white waves
-    second: {fileID: 2100000, guid: f04a2ded2718996409d94352196049b3, type: 2}
+      name: green
+    second: {fileID: 2100000, guid: 6665d2a0551f1ac49a6280117b3bb88a, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: black
-    second: {fileID: 2100000, guid: 4b59b8a782dac194d829ebb762d1a03b, type: 2}
+      name: hat
+    second: {fileID: 2100000, guid: 2639afa1f5c5c674fa16c67d2b4f4dee, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: green skin
-    second: {fileID: 2100000, guid: 08bea9bd77cd67046a308090d834ac41, type: 2}
+      name: white.001
+    second: {fileID: 2100000, guid: 60f39bafe1450ea408d201994e9ddb74, type: 2}
   - first:
-      type: UnityEngine:Material
+      type: UnityEngine:Texture2D
       assembly: UnityEngine.CoreModule
-      name: white
-    second: {fileID: 2100000, guid: 4d009b9718097ef4ea7023f6e4095f07, type: 2}
+      name: Fur06 normal 4k
+    second: {fileID: 2800000, guid: 957a274f8740d8d4fb1b0e49c054440c, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: Fur06 roughness 4k
+    second: {fileID: 2800000, guid: 43cadcf443ffc164abd172a63e200798, type: 3}
+  - first:
+      type: UnityEngine:Texture2D
+      assembly: UnityEngine.CoreModule
+      name: pink-brain-wallpaper-medicine-science-repetitive-background-seamless-pattern-human-neural-system-203898951
+    second: {fileID: 2800000, guid: 773cd6ee18fc9134eb6adfee76a63dea, type: 3}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -41,7 +51,8 @@ ModelImporter:
     optimizeGameObjects: 0
     removeConstantScaleCurves: 1
     motionNodeName: 
-    rigImportErrors: 
+    rigImportErrors: "Invalid Avatar Rig Configuration. Missing or invalid transform:\n\tRequired
+      human bone 'Hips' not found\n"
     rigImportWarnings: 
     animationImportErrors: 
     animationImportWarnings: 
@@ -49,7 +60,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -105,7 +116,52 @@ ModelImporter:
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: mashrom_70_mara(Clone)
+      parentName: 
+      position: {x: 0, y: 0, z: 0}
+      rotation: {x: 0, y: 0, z: 0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: body.001
+      parentName: mashrom_70_mara(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: arm right.001
+      parentName: mashrom_70_mara(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: leg right.001
+      parentName: mashrom_70_mara(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mushroom hat.001
+      parentName: mashrom_70_mara(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: eyes.001
+      parentName: mashrom_70_mara(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: smile.001
+      parentName: mashrom_70_mara(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: arm left.001
+      parentName: mashrom_70_mara(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: leg left.001
+      parentName: mashrom_70_mara(Clone)
+      position: {x: -0, y: 0, z: 0}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -116,11 +172,11 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
