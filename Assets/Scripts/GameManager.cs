@@ -107,7 +107,8 @@ public class GameManager : MonoBehaviour
                 }
 
 
-                emotionFillingBars[i].fillAmount = (emotionValues[(Planets)i] / 100);
+                emotionFillingBars[i].fillAmount = (emotionValues[(Planets)i] * 0.005f) + 0.5f;
+
             }
 
         }
@@ -137,6 +138,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             emotionValues.Add((Planets)i, barsInitialAmount);
+            emotionFillingBars[i].fillAmount = 0.5f;
         }
     }
     void MoveSun()
@@ -162,7 +164,7 @@ public class GameManager : MonoBehaviour
         currentPlanet.ResetPlanet();
         foreach (var image in pillarsIndicator)
         {
-            image.enabled = false;
+            //            image.enabled = false;
         }
         sunColorbeforeArrival = allPlanetsData[currentPlanet.planetType].planetColor;
         currentPlanet = allPlanetsData[destinationPlanet];

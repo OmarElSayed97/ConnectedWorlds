@@ -35,14 +35,16 @@ namespace Planet
             pillarMaterial = transform.GetChild(1).GetComponent<Renderer>().material;
             player = GameObject.FindGameObjectWithTag("Player").transform;
             emissiveColor = Color.gray;
+            chargeAmount = 0;
         }
 
         void Update()
         {
-            if (gameManager.currentPlanet.pillarsValues[pillarID] >= 100)
+            if (gameManager.currentPlanet.pillarsValues[pillarID] >= 100 && !isCharged)
             {
                 gameManager.currentPlanet.pillarsChargedCount++;
-                gameManager.pillarsIndicator[(int)pillarID].enabled = true;
+                //gameManager.pillarsIndicator[(int)pillarID].enabled = true;
+                isCharged = true;
 
             }
 
@@ -71,7 +73,7 @@ namespace Planet
         {
             if (other.CompareTag("Player"))
             {
-                if (gameManager.currentPlanet.pillarsValues[pillarID] < 100)
+                if (gameManager.currentPlanet.pillarsValues[pillarID] < 100 && !isCharged)
                 {
                     gameManager.currentPlanet.pillarsValues[pillarID] = gameManager.currentPlanet.pillarsValues[pillarID] + (Time.deltaTime * 50);
                     chargeAmountText.text = ((int)gameManager.currentPlanet.pillarsValues[pillarID]).ToString();
