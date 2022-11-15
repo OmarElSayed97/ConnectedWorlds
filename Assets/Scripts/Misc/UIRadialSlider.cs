@@ -1,5 +1,6 @@
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Events;
 
 
 public class UIRadialSlider : MonoBehaviour
@@ -27,6 +28,8 @@ public class UIRadialSlider : MonoBehaviour
     private float _dummyModifiedSlider;
     private Vector3 _dummyEuler = Vector3.zero;
 
+    public UnityEvent<float> onValueChanged;
+
     public float Slider
     {
         get => slider;
@@ -34,6 +37,7 @@ public class UIRadialSlider : MonoBehaviour
         {
             slider = value;
             UpdateSliderUI();
+            onValueChanged?.Invoke(slider);
         }
     }
 
