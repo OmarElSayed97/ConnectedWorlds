@@ -142,9 +142,9 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            emotionValues.Add((Planets)i, barsInitialAmount);
-            emotionFillingBars[i].fillAmount = allPlanetsData[(Planets)i].initialValue / 100 + 0.5f;
-            Debug.Log(allPlanetsData[(Planets)i].initialValue);
+            emotionValues.Add((Planets)i, allPlanetsData[(Planets)i].initialValue);
+            emotionFillingBars[i].fillAmount = (allPlanetsData[(Planets)i].initialValue * 0.01f) / 2 + 0.5f;
+
         }
     }
     void MoveSun()
