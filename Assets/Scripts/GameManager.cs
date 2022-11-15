@@ -35,7 +35,7 @@ public class GameManager : MonoBehaviour
     [SerializeField]
     public Image[] pillarsIndicator;
     [SerializeField]
-    Image[] emotionFillingBars;
+    UIRadialSlider[] emotionsRadialBars;
     [SerializeField]
     TextMeshProUGUI scoreText;
     float scoreValue;
@@ -108,7 +108,7 @@ public class GameManager : MonoBehaviour
                 }
 
 
-                emotionFillingBars[i].fillAmount = (emotionValues[(Planets)i] * 0.005f) + 0.5f;
+                emotionsRadialBars[i].Slider = (emotionValues[(Planets)i] * 0.005f) + 0.5f;
 
             }
 
@@ -143,7 +143,7 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             emotionValues.Add((Planets)i, allPlanetsData[(Planets)i].initialValue);
-            emotionFillingBars[i].fillAmount = (allPlanetsData[(Planets)i].initialValue * 0.01f) / 2 + 0.5f;
+            emotionsRadialBars[i].Slider = (allPlanetsData[(Planets)i].initialValue * 0.01f) / 2 + 0.5f;
 
         }
     }
