@@ -14,6 +14,8 @@ namespace Planet
         public bool isPortalReady;
         public Color planetColor;
 
+        public float initialValue;
+
         public void ResetPlanet()
         {
             pillarsValues[Pillars.FIRST] = 0;
@@ -25,7 +27,7 @@ namespace Planet
 
         }
 
-        public PlanetData(Planets planet)
+        public PlanetData(Planets planet, float planetInitialValue)
         {
             planetType = planet;
             pillarsValues = new Dictionary<Pillars, float>();
@@ -33,6 +35,7 @@ namespace Planet
                 pillarsValues.Add((Pillars)i, 0);
             pillarsChargedCount = 0;
             isPortalReady = false;
+            initialValue = planetInitialValue;
             switch (planet)
             {
                 case Planets.HAPPY_PLANET:

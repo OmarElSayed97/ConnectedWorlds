@@ -9,7 +9,7 @@ namespace Planet
     {
         [SerializeField] public Pillars pillarID;
         [SerializeField] public Planets planetID;
-        [HideInInspector] public bool isCharged;
+        [SerializeField] public bool isCharged;
 
         private float chargeAmount;
 
@@ -26,7 +26,10 @@ namespace Planet
         private Color emissiveColor;
         private bool isPillarReady;
 
-
+        void OnEnable()
+        {
+            GameManager.PlayerTravelStarted += StartPlayerTravel;
+        }
 
         void Start()
         {
@@ -35,6 +38,7 @@ namespace Planet
             pillarMaterial = transform.GetChild(1).GetComponent<Renderer>().material;
             player = GameObject.FindGameObjectWithTag("Player").transform;
             emissiveColor = Color.gray;
+            isCharged = false;
             chargeAmount = 0;
         }
 
@@ -43,10 +47,19 @@ namespace Planet
             if (gameManager.currentPlanet.pillarsValues[pillarID] >= 100 && !isCharged)
             {
                 gameManager.currentPlanet.pillarsChargedCount++;
-                //gameManager.pillarsIndicator[(int)pillarID].enabled = true;
+                gameManager.pillarsIndicator[(int)pillarID].enabled = true;
+                gameManager.pillarsIndicator[(int)pillarID].transform.DOScale(1, 0.3f).SetEase(Ease.InQuad);
                 isCharged = true;
 
             }
+
+        }
+
+        void StartPlayerTravel(Planets destination)
+        {
+            isCharged = false;
+            pillarMaterial.SetColor("_EmissionColor", emissiveColor);
+            pillarMaterial.EnableKeyword("_EMISSION");
 
         }
 
@@ -73,6 +86,7 @@ namespace Planet
         {
             if (other.CompareTag("Player"))
             {
+                Debug.Log("PILLAR: " + pillarID + "IS CHARGED: " + isCharged + " , PILLAR VALUE: " + gameManager.currentPlanet.pillarsValues[pillarID]);
                 if (gameManager.currentPlanet.pillarsValues[pillarID] < 100 && !isCharged)
                 {
                     gameManager.currentPlanet.pillarsValues[pillarID] = gameManager.currentPlanet.pillarsValues[pillarID] + (Time.deltaTime * 50);

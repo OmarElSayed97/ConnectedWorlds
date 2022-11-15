@@ -7,6 +7,7 @@ using Managers;
 using Planet;
 using TMPro;
 using UnityEngine.UI;
+using DG.Tweening;
 
 public class GameManager : MonoBehaviour
 {
@@ -128,7 +129,11 @@ public class GameManager : MonoBehaviour
     {
         for (int i = 0; i < 3; i++)
         {
-            PlanetData newPlanet = new PlanetData((Planets)i);
+            PlanetData newPlanet;
+            if (i == 0)
+                newPlanet = new PlanetData((Planets)i, 0);
+            else
+                newPlanet = new PlanetData((Planets)i, 70f);
             allPlanetsData.Add((Planets)i, newPlanet);
         }
 
@@ -138,7 +143,8 @@ public class GameManager : MonoBehaviour
         for (int i = 0; i < 3; i++)
         {
             emotionValues.Add((Planets)i, barsInitialAmount);
-            emotionFillingBars[i].fillAmount = 0.5f;
+            emotionFillingBars[i].fillAmount = allPlanetsData[(Planets)i].initialValue / 100 + 0.5f;
+            Debug.Log(allPlanetsData[(Planets)i].initialValue);
         }
     }
     void MoveSun()
@@ -164,7 +170,8 @@ public class GameManager : MonoBehaviour
         currentPlanet.ResetPlanet();
         foreach (var image in pillarsIndicator)
         {
-            //            image.enabled = false;
+            image.transform.DOScale(Vector3.zero, 1);
+            image.enabled = false;
         }
         sunColorbeforeArrival = allPlanetsData[currentPlanet.planetType].planetColor;
         currentPlanet = allPlanetsData[destinationPlanet];
