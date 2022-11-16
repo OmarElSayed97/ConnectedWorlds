@@ -22,7 +22,7 @@ namespace Planet
 
         //To be changed after adding asseets
         [SerializeField] TextMeshProUGUI chargeAmountText;
-        private float emissiveIntensity = 10f;
+        private float emissiveIntensity = 20f;
         private Color emissiveColor;
         private bool isPillarReady;
 
@@ -35,7 +35,7 @@ namespace Planet
         {
             gameManager = GameManager.Instance;
             pillarCanvas = transform.GetChild(0).GetComponent<Canvas>();
-            pillarMaterial = transform.GetChild(1).GetComponent<Renderer>().material;
+            pillarMaterial = transform.GetChild(1).GetChild(0).GetComponent<Renderer>().materials[3];
             player = GameObject.FindGameObjectWithTag("Player").transform;
             emissiveColor = Color.gray;
             isCharged = false;
@@ -44,12 +44,14 @@ namespace Planet
 
         void Update()
         {
-            if (gameManager.currentPlanet.pillarsValues[pillarID] >= 100 && !isCharged)
+            if (gameManager.currentPlanet.pillarsValues[pillarID] >= 100 && !isCharged && gameManager.currentPlanet.planetType == planetID)
             {
+
+                isCharged = true;
                 gameManager.currentPlanet.pillarsChargedCount++;
                 gameManager.pillarsIndicator[(int)pillarID].enabled = true;
                 gameManager.pillarsIndicator[(int)pillarID].transform.DOScale(1, 0.3f).SetEase(Ease.InQuad);
-                isCharged = true;
+
 
             }
 
@@ -86,7 +88,6 @@ namespace Planet
         {
             if (other.CompareTag("Player"))
             {
-                Debug.Log("PILLAR: " + pillarID + "IS CHARGED: " + isCharged + " , PILLAR VALUE: " + gameManager.currentPlanet.pillarsValues[pillarID]);
                 if (gameManager.currentPlanet.pillarsValues[pillarID] < 100 && !isCharged)
                 {
                     gameManager.currentPlanet.pillarsValues[pillarID] = gameManager.currentPlanet.pillarsValues[pillarID] + (Time.deltaTime * 50);

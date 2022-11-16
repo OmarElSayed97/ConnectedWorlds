@@ -86,6 +86,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
+
         UpdateScore();
         UpdateEmotions();
         MoveSun();
@@ -178,7 +179,7 @@ public class GameManager : MonoBehaviour
     {
         if (isPlayerTravelling)
             return;
-        currentPlanet.ResetPlanet();
+        allPlanetsData[currentPlanet.planetType].ResetPlanet();
         foreach (var image in pillarsIndicator)
         {
             image.transform.DOScale(Vector3.zero, 1);
