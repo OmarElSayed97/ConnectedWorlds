@@ -13,9 +13,10 @@ namespace Misc
         [SerializeField] private float planetDetectionRadius = 5f;
         
         private Collider[] _colliders;
-        private Transform _planet;
-        
+        [SerializeField, ReadOnly] private Transform planet;
 
+        public Transform PlanetTransform => planet;
+        
         private void Awake()
         {
             _colliders = new Collider[2];
@@ -42,32 +43,37 @@ namespace Misc
                 if (!(currentDistance < minSquareDistance)) continue;
                 
                 minSquareDistance = currentDistance;
-                _planet = _colliders[i].transform;
+                planet = _colliders[i].transform;
             }
         }
 
         [Button]
-        private void FixOrientation()
+        public void FixOrientation()
         {
             if (_colliders.IsNullOrEmpty())
                 _colliders = new Collider[2];
             
-            DetectPlanet();
+            if (!planet)
+                DetectPlanet();
 
-            if (!_planet) return;
+            if (!planet) return;
             
             var currentTransform = transform;
-            var planetTransform = _planet.transform;
+            var planetTransform = planet.transform;
 
             var deltaPosition = currentTransform.position - planetTransform.position;
             var normalizedDeltaPosition = deltaPosition.normalized;
 
             var ray = new Ray(currentTransform.position + normalizedDeltaPosition * planetDetectionRadius, -normalizedDeltaPosition);
 
-            Debug.DrawRay(ray.origin, ray.direction * 2 * planetDetectionRadius, Color.red, 0.5f);
+            Debug.DrawRay(ray.origin, ray.direction * (2 * planetDetectionRadius), Color.red, 0.5f);
             if (Physics.Raycast(ray, out var hit, planetDetectionRadius * 2, groundMask))
             {
                 transform.SetPositionAndRotation(hit.point, Quaternion.LookRotation(Vector3.ProjectOnPlane(currentTransform.forward, hit.normal), hit.normal));
+            }
+            else
+            {
+                planet = null;
             }
 
         }
