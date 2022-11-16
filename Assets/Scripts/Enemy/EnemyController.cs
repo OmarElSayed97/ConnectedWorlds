@@ -128,7 +128,7 @@ namespace Enemy
         {
             if (_switchRotationTimer < 0)
             {
-                currentRotationAngle += Random.Range(0, 4) > 1 ? -90f : 90f;
+                currentRotationAngle += Random.Range(-3f, 3f) * 30f;
                 _switchRotationTimer += Random.Range(angleSwitchTimeRange.x, angleSwitchTimeRange.y);
             }
             else
