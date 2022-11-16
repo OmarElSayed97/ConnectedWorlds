@@ -66,7 +66,7 @@ namespace Misc
 
             var ray = new Ray(currentTransform.position + normalizedDeltaPosition * planetDetectionRadius, -normalizedDeltaPosition);
 
-            Debug.DrawRay(ray.origin, ray.direction * (2 * planetDetectionRadius), Color.red, 0.5f);
+            Debug.DrawRay(ray.origin, ray.direction * (2 * planetDetectionRadius), Color.red, 0.1f);
             if (Physics.Raycast(ray, out var hit, planetDetectionRadius * 2, groundMask))
             {
                 transform.SetPositionAndRotation(hit.point, Quaternion.LookRotation(Vector3.ProjectOnPlane(currentTransform.forward, hit.normal), hit.normal));
