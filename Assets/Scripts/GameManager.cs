@@ -118,7 +118,7 @@ public class GameManager : MonoBehaviour
                 emotionsRadialBars[i].Slider = (emotionValues[(Planets)i] * 0.005f) + 0.5f;
 
                 if (planetPreviousValue > planetNearDeathThreshold &&
-                    emotionValues[(Planets)i] < planetNearDeathThreshold)
+                    emotionValues[(Planets)i] <= planetNearDeathThreshold)
                 {
                     PlanetNearDeath?.Invoke((Planets)i);
                 }
