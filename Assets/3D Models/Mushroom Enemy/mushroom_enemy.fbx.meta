@@ -117,48 +117,48 @@ ModelImporter:
     serializedVersion: 3
     human: []
     skeleton:
-    - name: mashrom_70_mara(Clone)
+    - name: mushroom_enemy(Clone)
       parentName: 
       position: {x: 0, y: 0, z: 0}
       rotation: {x: 0, y: 0, z: 0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: body.001
-      parentName: mashrom_70_mara(Clone)
+      parentName: mushroom_enemy(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: arm right.001
-      parentName: mashrom_70_mara(Clone)
+      parentName: mushroom_enemy(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: leg right.001
-      parentName: mashrom_70_mara(Clone)
+      parentName: mushroom_enemy(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: mushroom hat.001
-      parentName: mashrom_70_mara(Clone)
+      parentName: mushroom_enemy(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: eyes.001
-      parentName: mashrom_70_mara(Clone)
+      parentName: mushroom_enemy(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: smile.001
-      parentName: mashrom_70_mara(Clone)
+      parentName: mushroom_enemy(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: arm left.001
-      parentName: mashrom_70_mara(Clone)
+      parentName: mushroom_enemy(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
     - name: leg left.001
-      parentName: mashrom_70_mara(Clone)
+      parentName: mushroom_enemy(Clone)
       position: {x: -0, y: 0, z: 0}
       rotation: {x: 0, y: -0, z: -0, w: 1}
       scale: {x: 1, y: 1, z: 1}
