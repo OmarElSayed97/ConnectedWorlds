@@ -11855,7 +11855,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 330585543}
-  m_LocalRotation: {x: 0.4839309, y: -0.000000021294392, z: 0.00000001177573, w: 0.8751062}
+  m_LocalRotation: {x: 0.4839309, y: 0.000000021294397, z: -0.0000000117757315, w: 0.8751062}
   m_LocalPosition: {x: 351.99, y: 40.09, z: 0.09000015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -31879,7 +31879,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1365298484}
-  m_LocalRotation: {x: 0.4839309, y: -0.000000021294392, z: 0.00000001177573, w: 0.8751062}
+  m_LocalRotation: {x: 0.4839309, y: 0.000000021294397, z: -0.0000000117757315, w: 0.8751062}
   m_LocalPosition: {x: 351.99, y: 40.09, z: 0.09000015}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -41092,8 +41092,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barsInitialAmount: 0
-  emotionIncreasingFactor: 1.65
-  emotionDecayingFactor: 0.75
+  emotionIncreasingFactor: 1.5
+  emotionDecayingFactor: 0.7
   planetNearDeathThreshold: 10
   isPlayerTravelling: 0
   pillarsIndicator:
@@ -43164,6 +43164,16 @@ PrefabInstance:
       propertyPath: planet
       value: 
       objectReference: {fileID: 97601992}
+    - target: {fileID: 3236734839557801796, guid: 81756e96d140b8645937172b9d9e12dd,
+        type: 3}
+      propertyPath: spawnIntervalRange.x
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3236734839557801796, guid: 81756e96d140b8645937172b9d9e12dd,
+        type: 3}
+      propertyPath: spawnIntervalRange.y
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 3236734839557801850, guid: 81756e96d140b8645937172b9d9e12dd,
         type: 3}
       propertyPath: m_Name
