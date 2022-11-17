@@ -143,9 +143,9 @@ public class GameManager : MonoBehaviour
         {
             PlanetData newPlanet;
             if (i == 0)
-                newPlanet = new PlanetData((Planets)i, 0);
+                newPlanet = new PlanetData((Planets)i, 15);
             else
-                newPlanet = new PlanetData((Planets)i, 70f);
+                newPlanet = new PlanetData((Planets)i, 55f);
             allPlanetsData.Add((Planets)i, newPlanet);
         }
 

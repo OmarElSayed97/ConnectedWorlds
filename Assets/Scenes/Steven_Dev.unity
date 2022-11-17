@@ -39241,8 +39241,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   barsInitialAmount: 0
-  emotionIncreasingFactor: 1
-  emotionDecayingFactor: 22
+  emotionIncreasingFactor: 1.65
+  emotionDecayingFactor: 0.75
   planetNearDeathThreshold: 10
   isPlayerTravelling: 0
   pillarsIndicator:
